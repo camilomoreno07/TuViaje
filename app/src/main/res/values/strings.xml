@@ -3,4 +3,6 @@
     <string name="title_news">Noticias</string>
     <string name="title_dashboard">Historicos</string>
     <string name="title_notifications">Back-Up</string>
+    <string name="title_informe">Informe</string>
+    <string name="title_activity_informe">InformeActivity</string>
 </resources>

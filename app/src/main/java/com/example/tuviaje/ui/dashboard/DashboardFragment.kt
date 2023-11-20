@@ -1,12 +1,12 @@
 package com.example.tuviaje.ui.dashboard
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import com.example.tuviaje.InformeActivity
 import com.example.tuviaje.databinding.FragmentDashboardBinding
 
 class DashboardFragment : Fragment() {
@@ -22,16 +22,17 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        // Set up click listener for the button
+        binding.buttonAdd.setOnClickListener {
+            // Call a function to handle the button click
+            val intent = Intent(this@DashboardFragment.requireContext(), InformeActivity::class.java)
+            startActivity(intent)
         }
+
         return root
     }
 
@@ -39,4 +40,6 @@ class DashboardFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+
 }
