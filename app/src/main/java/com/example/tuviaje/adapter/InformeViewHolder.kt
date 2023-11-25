@@ -14,9 +14,8 @@ class InformeViewHolder(view: View) : RecyclerView.ViewHolder(view){
     val valorGalon = view.findViewById<TextView>(R.id.textView1)
 
     fun render(informeModel: Informe){
-
         galon.text = informeModel.gastoGasolina
         valorGalon.text = informeModel.valorGasolina.toString()
-
     }
+
 }
