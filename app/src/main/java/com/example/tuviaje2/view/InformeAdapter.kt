@@ -14,37 +14,35 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tuviaje2.R
 import com.example.tuviaje2.model.Informe
 
-class InformeAdapter(val c:Context, val informeList:ArrayList<Informe>):RecyclerView.Adapter<InformeAdapter.InformeViewHolder>() {
+class InformeAdapter(val context: Context, val informeList: ArrayList<Informe>) :
+    RecyclerView.Adapter<InformeAdapter.InformeViewHolder>() {
 
-    inner class InformeViewHolder(val v:View) : RecyclerView.ViewHolder(v){
-        var costoGasolina:TextView
-        var porcentajeConductor:TextView
-        var menu: ImageView
+    inner class InformeViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+        val costoGasolina: TextView = view.findViewById(R.id.mTitle)
+        val porcentajeConductor: TextView = view.findViewById(R.id.mSubTitle)
+        val menu: ImageView = view.findViewById(R.id.mMenus)
 
-        init{
-            costoGasolina = v.findViewById<TextView>(R.id.mTitle)
-            porcentajeConductor = v.findViewById<TextView>(R.id.mSubTitle)
-            menu = v.findViewById(R.id.mMenus)
-            menu.setOnClickListener{popupMenus(it)}
+        init {
+            menu.setOnClickListener { popupMenus() }
         }
 
-        private fun popupMenus(v: View) {
+        private fun popupMenus() {
             val position = informeList[bindingAdapterPosition]
-            val popupMenus = PopupMenu(c, v)
+            val popupMenus = PopupMenu(context, menu)
             popupMenus.inflate(R.menu.show_menu)
             popupMenus.setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.editText -> {
-                        val v = LayoutInflater.from(c).inflate(R.layout.add_item, null)
-                        val name = v.findViewById<EditText>(R.id.userName)
-                        val number = v.findViewById<EditText>(R.id.userNo)
-                        AlertDialog.Builder(c)
-                            .setView(v)
+                        val view = LayoutInflater.from(context).inflate(R.layout.add_item, null)
+                        val name = view.findViewById<EditText>(R.id.loadOne)
+                        val number = view.findViewById<EditText>(R.id.loadTwo)
+                        AlertDialog.Builder(context)
+                            .setView(view)
                             .setPositiveButton("Ok") { dialog, _ ->
                                 position.valorGasolina = name.text.toString()
                                 position.porcentajeConductor = number.text.toString()
                                 notifyDataSetChanged()
-                                Toast.makeText(c, "Informe Editado", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, "Informe Editado", Toast.LENGTH_SHORT).show()
                                 dialog.dismiss()
                             }
                             .setNegativeButton("Cancelar") { dialog, _ ->
@@ -55,15 +53,14 @@ class InformeAdapter(val c:Context, val informeList:ArrayList<Informe>):Recycler
                         true
                     }
                     R.id.delete -> {
-                        // set delete
-                        AlertDialog.Builder(c)
-                            .setTitle("Delete")
+                        AlertDialog.Builder(context)
+                            .setTitle("Borrar")
                             .setIcon(R.drawable.ic_warning)
-                            .setMessage("Are you sure you want to delete this information?")
+                            .setMessage("Estás seguro que quieres borrar este registro?")
                             .setPositiveButton("Yes") { dialog, _ ->
                                 informeList.removeAt(bindingAdapterPosition)
                                 notifyDataSetChanged()
-                                Toast.makeText(c, "Deleted this Information", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, "Registro borrado", Toast.LENGTH_SHORT).show()
                                 dialog.dismiss()
                             }
                             .setNegativeButton("No") { dialog, _ ->
@@ -78,29 +75,31 @@ class InformeAdapter(val c:Context, val informeList:ArrayList<Informe>):Recycler
             }
             popupMenus.show()
 
-            val popup = PopupMenu::class.java.getDeclaredField("mPopup")
-            popup.isAccessible = true
-            val menu = popup.get(popupMenus)
-            menu.javaClass.getDeclaredMethod("setForceShowIcon", Boolean::class.java)
-                .invoke(menu, true)
+            try {
+                val popup = PopupMenu::class.java.getDeclaredField("mPopup")
+                popup.isAccessible = true
+                val menu = popup.get(popupMenus)
+                menu.javaClass.getDeclaredMethod("setForceShowIcon", Boolean::class.java)
+                    .invoke(menu, true)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
-
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InformeViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val v  = inflater.inflate(R.layout.item_list,parent,false)
-        return InformeViewHolder(v)
+        val view = inflater.inflate(R.layout.item_list, parent, false)
+        return InformeViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: InformeViewHolder, position: Int) {
-        val newList = informeList[position]
-        holder.costoGasolina.text = newList.valorGasolina
-        holder.porcentajeConductor.text = newList.porcentajeConductor
+        val item = informeList[position]
+        holder.costoGasolina.text = item.valorGasolina
+        holder.porcentajeConductor.text = item.porcentajeConductor
     }
 
     override fun getItemCount(): Int {
-        return  informeList.size
+        return informeList.size
     }
 }

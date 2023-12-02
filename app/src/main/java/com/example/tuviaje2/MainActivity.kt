@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tuviaje2.model.Informe
 import com.example.tuviaje2.view.InformeAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
     private lateinit var addsBtn:FloatingActionButton
@@ -36,33 +39,36 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addInfo() {
-        val inflter = LayoutInflater.from(this)
-        val v = inflter.inflate(R.layout.add_item,null)
-        /**set view*/
-        val userName = v.findViewById<EditText>(R.id.userName)
-        val userNo = v.findViewById<EditText>(R.id.userNo)
+        val inflater = LayoutInflater.from(this)
+        val view = inflater.inflate(R.layout.add_item, null)
+        val userName = view.findViewById<EditText>(R.id.nombre)
+        val userNo = view.findViewById<EditText>(R.id.loadTwo)
 
         val addDialog = AlertDialog.Builder(this)
 
-        addDialog.setView(v)
-        addDialog.setPositiveButton("Ok"){
-                dialog,_->
-            val names = userName.text.toString()
+        addDialog.setView(view)
+        addDialog.setPositiveButton("Ok") { dialog, _ ->
+            val name = userName.text.toString()
             val number = userNo.text.toString()
-            informeList.add(Informe("Name: $names","Mobile No. : $number"))
+            informeList.add(Informe("Nombre: $name", "Fecha de Creación: ${getCurrentDate()}", "Mobile No. : $number"))
             informeAdapter.notifyDataSetChanged()
-            Toast.makeText(this,"Adding User Information Success",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Registro Exitoso", Toast.LENGTH_SHORT).show()
             dialog.dismiss()
         }
-        addDialog.setNegativeButton("Cancel"){
-                dialog,_->
+        addDialog.setNegativeButton("Cancelar") { dialog, _ ->
             dialog.dismiss()
-            Toast.makeText(this,"Cancel",Toast.LENGTH_SHORT).show()
-
+            Toast.makeText(this, "Cancel", Toast.LENGTH_SHORT).show()
         }
         addDialog.create()
         addDialog.show()
     }
+
+    private fun getCurrentDate(): String {
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
+        val date = Date()
+        return dateFormat.format(date)
+    }
+
     /**ok now run this */
 
 }

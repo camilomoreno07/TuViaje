@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_home"
+        android:title="Inicio" />
+    <item
+        android:id="@+id/navigation_informes"
+        android:title="Informes"/>
+    <item
+        android:id="@+id/navigation_back_up"
+        android:title="Back-up" />
+</menu>

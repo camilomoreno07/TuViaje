@@ -1,61 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<GridLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:columnCount="2"
+    android:rowCount="8"
+    android:orientation="horizontal"
     android:gravity="center"
-    >
+    android:layout_margin="16dp"
+    android:padding="16dp">
 
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_margin="16dp"
+    <TextView
+        android:text="Crear Informe"
+        android:textStyle="bold"
+        android:textSize="19sp"
+        android:textColor="@color/white"
+        android:background="@color/teal_700"
+        android:padding="10dp"
+        android:elevation="15dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_columnSpan="2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:text="Crear Informe"
-            android:textStyle="bold"
-            android:textSize="19sp"
-            android:textColor="@color/white"
-            android:background="@color/teal_700"
-            android:padding="10dp"
-            android:elevation="15dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <EditText
-            android:id="@+id/userName"
-            android:hint="Costo Gasolina"
-            android:inputType="textPersonName"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:background="@drawable/shape_background"
-            android:padding="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <EditText
-            android:id="@+id/userNo"
-            android:hint="Porcentaje Conductor"
-            android:inputType="phone"
-            android:textColor="@color/black"
-            android:background="@drawable/shape_background"
-            android:padding="15dp"
-            android:textSize="18sp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"/>
 
+    <EditText
+        android:id="@+id/nombre"
+        android:hint="Nombre del Archivo"
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:background="@drawable/shape_background"
+        android:padding="15dp"
+        android:layout_columnSpan="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
+    <EditText
+        android:id="@+id/loadOne"
+        android:hint="Planilla1"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:background="@drawable/shape_background"
+        android:padding="15dp"
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
 
-    </LinearLayout>
+    <EditText
+        android:id="@+id/loadTwo"
+        android:hint="Planilla 2"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:background="@drawable/shape_background"
+        android:padding="15dp"
+        android:textSize="18sp"
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
 
-</LinearLayout>
+    <EditText
+        android:id="@+id/planilla3"
+        android:hint="Planilla 3"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:background="@drawable/shape_background"
+        android:padding="15dp"
+        android:textSize="18sp"
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/planilla4"
+        android:hint="Planilla 4"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:background="@drawable/shape_background"
+        android:padding="15dp"
+        android:textSize="18sp"
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/gastoCombustible"
+        android:hint="Gasto Combustible"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:background="@drawable/shape_background"
+        android:padding="15dp"
+        android:textSize="18sp"
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/muchileo"
+        android:hint="Muchileo"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:background="@drawable/shape_background"
+        android:padding="15dp"
+        android:textSize="18sp"
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/gastosAdicionales"
+        android:hint="Gastos Adicionales"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:background="@drawable/shape_background"
+        android:padding="15dp"
+        android:textSize="18sp"
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/porcentajeConductor"
+        android:hint="Porcentaje Conductor"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:background="@drawable/shape_background"
+        android:padding="15dp"
+        android:textSize="18sp"
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+
+</GridLayout>
