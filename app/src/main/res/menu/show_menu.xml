@@ -3,13 +3,12 @@
     <!--we add icons-->
     <item
         android:id="@+id/editText"
-        android:title="Edit Text"
+        android:title="Editar Registro"
         android:icon="@drawable/ic_edit"
         />
     <item
         android:id="@+id/delete"
-        android:title="Delete"
+        android:title="Borrar"
         android:icon="@drawable/ic_delete"
-        />
-
+    />
 </menu>

@@ -1,74 +1,41 @@
 package com.example.tuviaje2
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.widget.EditText
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.tuviaje2.model.Informe
-import com.example.tuviaje2.view.InformeAdapter
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import android.widget.Button
+import com.example.tuviaje2.controller.BackupActivity
+import com.example.tuviaje2.controller.InformeActivity
+import com.example.tuviaje2.controller.NewActivity
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var addsBtn:FloatingActionButton
-    private lateinit var recv:RecyclerView
-    private lateinit var informeList:ArrayList<Informe>
-    private lateinit var informeAdapter:InformeAdapter
+
+    private lateinit var btnNoticias: Button;
+    private lateinit var btnInformes: Button;
+    private lateinit var btnBackUp: Button;
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        /**set List*/
-        informeList = ArrayList()
-        /**set find Id*/
-        addsBtn = findViewById(R.id.addingBtn)
-        recv = findViewById(R.id.mRecycler)
-        /**set Adapter*/
-        informeAdapter =InformeAdapter(this,informeList)
-        /**setRecycler view Adapter*/
-        recv.layoutManager = LinearLayoutManager(this)
-        recv.adapter = informeAdapter
-        /**set Dialog*/
-        addsBtn.setOnClickListener { addInfo() }
 
-    }
+        btnNoticias = findViewById(R.id.noticiasBtn)
+        btnInformes = findViewById(R.id.informesBtn)
+        btnBackUp = findViewById(R.id.backUpBtn)
 
-    private fun addInfo() {
-        val inflater = LayoutInflater.from(this)
-        val view = inflater.inflate(R.layout.add_item, null)
-        val userName = view.findViewById<EditText>(R.id.nombre)
-        val userNo = view.findViewById<EditText>(R.id.loadTwo)
-
-        val addDialog = AlertDialog.Builder(this)
-
-        addDialog.setView(view)
-        addDialog.setPositiveButton("Ok") { dialog, _ ->
-            val name = userName.text.toString()
-            val number = userNo.text.toString()
-            informeList.add(Informe("Nombre: $name", "Fecha de Creación: ${getCurrentDate()}", "Mobile No. : $number"))
-            informeAdapter.notifyDataSetChanged()
-            Toast.makeText(this, "Registro Exitoso", Toast.LENGTH_SHORT).show()
-            dialog.dismiss()
+        btnNoticias.setOnClickListener(){
+            val intent = Intent(this, NewActivity::class.java)
+            startActivity(intent)
         }
-        addDialog.setNegativeButton("Cancelar") { dialog, _ ->
-            dialog.dismiss()
-            Toast.makeText(this, "Cancel", Toast.LENGTH_SHORT).show()
+
+        btnInformes.setOnClickListener(){
+            val intent = Intent(this, InformeActivity::class.java)
+            startActivity(intent)
         }
-        addDialog.create()
-        addDialog.show()
+
+        btnBackUp.setOnClickListener(){
+            val intent = Intent(this, BackupActivity::class.java)
+            startActivity(intent)
+        }
+
     }
-
-    private fun getCurrentDate(): String {
-        val dateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
-        val date = Date()
-        return dateFormat.format(date)
-    }
-
-    /**ok now run this */
-
 }
