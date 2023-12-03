@@ -1,11 +1,10 @@
-package com.example.tuviaje2.view
+package com.example.tuviaje2.adapter
 
 import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
@@ -14,12 +13,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tuviaje2.R
 import com.example.tuviaje2.model.Informe
 
-class InformeAdapter(val context: Context, val informeList: ArrayList<Informe>) :
+class InformeAdapter(
+    val context: Context,
+    val informeList: ArrayList<Informe>,
+    val saveToSharedPreferences: () -> Unit) :
     RecyclerView.Adapter<InformeAdapter.InformeViewHolder>() {
 
     inner class InformeViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        val costoGasolina: TextView = view.findViewById(R.id.mTitle)
-        val porcentajeConductor: TextView = view.findViewById(R.id.mSubTitle)
+        val nombreArchivo: TextView = view.findViewById(R.id.mTitle)
+        val fechaCreacion: TextView = view.findViewById(R.id.mSubTitle)
         val menu: ImageView = view.findViewById(R.id.mMenus)
 
         init {
@@ -33,23 +35,7 @@ class InformeAdapter(val context: Context, val informeList: ArrayList<Informe>) 
             popupMenus.setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.editText -> {
-                        val view = LayoutInflater.from(context).inflate(R.layout.add_item, null)
-                        val name = view.findViewById<EditText>(R.id.loadOne)
-                        val number = view.findViewById<EditText>(R.id.loadTwo)
-                        AlertDialog.Builder(context)
-                            .setView(view)
-                            .setPositiveButton("Ok") { dialog, _ ->
-                                position.valorGasolina = name.text.toString()
-                                position.porcentajeConductor = number.text.toString()
-                                notifyDataSetChanged()
-                                Toast.makeText(context, "Informe Editado", Toast.LENGTH_SHORT).show()
-                                dialog.dismiss()
-                            }
-                            .setNegativeButton("Cancelar") { dialog, _ ->
-                                dialog.dismiss()
-                            }
-                            .create()
-                            .show()
+                        // Your edit logic
                         true
                     }
                     R.id.delete -> {
@@ -57,9 +43,14 @@ class InformeAdapter(val context: Context, val informeList: ArrayList<Informe>) 
                             .setTitle("Borrar")
                             .setIcon(R.drawable.ic_warning)
                             .setMessage("Estás seguro que quieres borrar este registro?")
-                            .setPositiveButton("Yes") { dialog, _ ->
-                                informeList.removeAt(bindingAdapterPosition)
+                            .setPositiveButton("Sí") { dialog, _ ->
+                                val position = bindingAdapterPosition
+                                informeList.removeAt(position)
                                 notifyDataSetChanged()
+
+                                // Call the provided function to save to SharedPreferences
+                                saveToSharedPreferences()
+
                                 Toast.makeText(context, "Registro borrado", Toast.LENGTH_SHORT).show()
                                 dialog.dismiss()
                             }
@@ -95,8 +86,8 @@ class InformeAdapter(val context: Context, val informeList: ArrayList<Informe>) 
 
     override fun onBindViewHolder(holder: InformeViewHolder, position: Int) {
         val item = informeList[position]
-        holder.costoGasolina.text = item.valorGasolina
-        holder.porcentajeConductor.text = item.porcentajeConductor
+        holder.nombreArchivo.text = item.nombreArchivo
+        holder.fechaCreacion.text = item.fechaCreacion
     }
 
     override fun getItemCount(): Int {

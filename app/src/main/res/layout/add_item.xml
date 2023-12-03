@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"/>
 
     <EditText
-        android:id="@+id/nombre"
+        android:id="@+id/nombreArchivo"
         android:hint="Nombre del Archivo"
         android:inputType="textPersonName"
         android:textColor="@color/black"
@@ -34,10 +34,11 @@
         android:padding="15dp"
         android:layout_columnSpan="2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"/>
 
     <EditText
-        android:id="@+id/loadOne"
+        android:id="@+id/planilla1"
         android:hint="Planilla1"
         android:inputType="number"
         android:textColor="@color/black"
@@ -47,10 +48,12 @@
         android:layout_columnSpan="1"
         android:layout_columnWeight="1"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="2dp"/>
 
     <EditText
-        android:id="@+id/loadTwo"
+        android:id="@+id/planilla2"
         android:hint="Planilla 2"
         android:inputType="number"
         android:textColor="@color/black"
@@ -60,7 +63,9 @@
         android:layout_columnSpan="1"
         android:layout_columnWeight="1"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="2dp"/>
 
     <EditText
         android:id="@+id/planilla3"
@@ -73,7 +78,9 @@
         android:layout_columnSpan="1"
         android:layout_columnWeight="1"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="2dp"/>
 
     <EditText
         android:id="@+id/planilla4"
@@ -86,7 +93,9 @@
         android:layout_columnSpan="1"
         android:layout_columnWeight="1"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="2dp"/>
 
     <EditText
         android:id="@+id/gastoCombustible"
@@ -99,7 +108,9 @@
         android:layout_columnSpan="1"
         android:layout_columnWeight="1"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="2dp"/>
 
     <EditText
         android:id="@+id/muchileo"
@@ -112,20 +123,24 @@
         android:layout_columnSpan="1"
         android:layout_columnWeight="1"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="2dp"/>
 
     <EditText
         android:id="@+id/gastosAdicionales"
-        android:hint="Gastos Adicionales"
-        android:inputType="number"
-        android:textColor="@color/black"
-        android:background="@drawable/shape_background"
-        android:padding="15dp"
-        android:textSize="18sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_columnSpan="1"
         android:layout_columnWeight="1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"/>
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="2dp"
+        android:background="@drawable/shape_background"
+        android:hint="Gastos Adicionales"
+        android:inputType="number"
+        android:padding="15dp"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/porcentajeConductor"
@@ -138,6 +153,39 @@
         android:layout_columnSpan="1"
         android:layout_columnWeight="1"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="2dp"/>
+
+    <EditText
+        android:id="@+id/numeroPeajes"
+        android:hint="Número de Peajes"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:background="@drawable/shape_background"
+        android:padding="15dp"
+        android:textSize="18sp"
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="2dp"/>
+
+    <EditText
+        android:id="@+id/valorPeaje"
+        android:hint="Valor del Peaje"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:background="@drawable/shape_background"
+        android:padding="15dp"
+        android:textSize="18sp"
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="2dp"/>
+
 
 </GridLayout>

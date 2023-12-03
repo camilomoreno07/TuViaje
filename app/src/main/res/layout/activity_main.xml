@@ -17,6 +17,10 @@
             android:id="@+id/noticiasBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:padding="15dp"
+            android:background="@drawable/shape_background"
             android:layout_gravity="center"
             android:text="Noticias"/>
 
@@ -24,7 +28,12 @@
             android:id="@+id/informesBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:padding="15dp"
+            android:background="@drawable/shape_background"
             android:layout_gravity="center"
+            android:layout_marginTop="5dp"
             android:text="Informes"/>
 
         <Button
@@ -32,6 +41,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:padding="15dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/shape_background"
             android:text="Back-Up"/>
 
     </LinearLayout>
